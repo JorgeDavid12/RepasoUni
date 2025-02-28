@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion
 {
-    partial class Form1
+    partial class FormEstudiantes
     {
         /// <summary>
         /// Variable del diseñador necesaria.
