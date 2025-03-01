@@ -22,44 +22,47 @@ namespace CapaDatos
             return dtMostrarEstu;
         }
 
-        //public void CP_mtdAgregarVehiculos(string Marca, string Modelo, int Año, decimal Precio, string Estado)
-        //{
+        public void CP_mtdAgregarEstu(string Nombre, string Apellido, DateTime FechaNaci, DateTime FechaIns, int CarreraID, string Direccion, string Telefono, string Estado)
+        {
 
-        //    string Usp_crear = "uspVehiculosInsertar";
-        //    SqlCommand cmd_InsertarVehiculos = new SqlCommand(Usp_crear, conexion.MtdAbrirConexion());
-        //    cmd_InsertarVehiculos.CommandType = CommandType.StoredProcedure;
+            string Usp_crear = "uspInserEstudiantes";
+            SqlCommand cmd_InsertarEstu = new SqlCommand(Usp_crear, conexion.MtdAbrirConexion());
+            cmd_InsertarEstu.CommandType = CommandType.StoredProcedure;
 
-        //    cmd_InsertarVehiculos.Parameters.AddWithValue("@Marca", Marca);
-        //    cmd_InsertarVehiculos.Parameters.AddWithValue("@Modelo", Modelo);
-        //    cmd_InsertarVehiculos.Parameters.AddWithValue("@Año", Año);
-        //    cmd_InsertarVehiculos.Parameters.AddWithValue("@Precio", Precio);
-        //    cmd_InsertarVehiculos.Parameters.AddWithValue("@Estado", Estado);
-        //    cmd_InsertarVehiculos.ExecuteNonQuery();
+            cmd_InsertarEstu.Parameters.AddWithValue("@Nombre", Nombre);
+            cmd_InsertarEstu.Parameters.AddWithValue("@Apellido", Apellido);
+            cmd_InsertarEstu.Parameters.AddWithValue("@FechaNacimiento", FechaNaci.Date);
+            cmd_InsertarEstu.Parameters.AddWithValue("@FechaInscripcion", FechaIns.Date);
+            cmd_InsertarEstu.Parameters.AddWithValue("@CarreraID", CarreraID);
+            cmd_InsertarEstu.Parameters.AddWithValue("@Direccion", Direccion);
+            cmd_InsertarEstu.Parameters.AddWithValue("@Telefono", Telefono);
+            cmd_InsertarEstu.Parameters.AddWithValue("@Estado", Estado);
+            cmd_InsertarEstu.ExecuteNonQuery();
 
-        //    conexion.MtdCerrarConexion();
+            conexion.MtdCerrarConexion();
 
-        //}
+        }
 
-        //public int CP_mtdActualizarVh(int VehiculoID, string Marca, string Modelo, int Año, decimal Precio, string Estado)
-        //{
-        //    int vContarRegistrosAfectados = 0;
+        public int CP_mtdActualizarVh(int VehiculoID, string Marca, string Modelo, int Año, decimal Precio, string Estado)
+        {
+            int vContarRegistrosAfectados = 0;
 
-        //    string vUspActualizarVh = "uspVehiculosUpdate";
-        //    SqlCommand commActualizarVh = new SqlCommand(vUspActualizarVh, conexion.MtdAbrirConexion());
-        //    commActualizarVh.CommandType = CommandType.StoredProcedure;
+            string vUspActualizarVh = "uspVehiculosUpdate";
+            SqlCommand commActualizarVh = new SqlCommand(vUspActualizarVh, conexion.MtdAbrirConexion());
+            commActualizarVh.CommandType = CommandType.StoredProcedure;
 
-        //    commActualizarVh.Parameters.AddWithValue("@VehiculoID", VehiculoID);
-        //    commActualizarVh.Parameters.AddWithValue("@Marca", Marca);
-        //    commActualizarVh.Parameters.AddWithValue("@Modelo", Modelo);
-        //    commActualizarVh.Parameters.AddWithValue("@Año", Año);
-        //    commActualizarVh.Parameters.AddWithValue("@Precio", Precio);
-        //    commActualizarVh.Parameters.AddWithValue("@Estado", Estado);
+            commActualizarVh.Parameters.AddWithValue("@VehiculoID", VehiculoID);
+            commActualizarVh.Parameters.AddWithValue("@Marca", Marca);
+            commActualizarVh.Parameters.AddWithValue("@Modelo", Modelo);
+            commActualizarVh.Parameters.AddWithValue("@Año", Año);
+            commActualizarVh.Parameters.AddWithValue("@Precio", Precio);
+            commActualizarVh.Parameters.AddWithValue("@Estado", Estado);
 
-        //    vContarRegistrosAfectados = commActualizarVh.ExecuteNonQuery();
+            vContarRegistrosAfectados = commActualizarVh.ExecuteNonQuery();
 
-        //    conexion.MtdCerrarConexion();
-        //    return vContarRegistrosAfectados;
-        //}
+            conexion.MtdCerrarConexion();
+            return vContarRegistrosAfectados;
+        }
 
         //public int CP_mtdEliminarVh(int codigo)
         //{
