@@ -20,7 +20,6 @@ namespace CapaPresentacion
         }
         public void MtdMostrarEstu()
         {
-            //CDVehiculos cdVehiculos = new CDVehiculos();
             DataTable dtMostrarEstu = cdEstudiantes.MtMostrarEstu();
             dgvVehiculos.DataSource = dtMostrarEstu;    
         }
@@ -58,5 +57,33 @@ namespace CapaPresentacion
             txtTelefono.Text = dgvVehiculos.SelectedCells[7].Value.ToString();
             cmbEstado.Text = dgvVehiculos.SelectedCells[8].Value.ToString();
         }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                int codigo = int.Parse(txtID.Text);
+                string nombre = txtNombre.Text;
+                string apellido = txtApellido.Text;
+                DateTime fechaNac = DateTime.Parse(txtFecNac.Text);
+                DateTime fechaIns = DateTime.Parse(txtFecInc.Text);
+                int carreraID = int.Parse(txtCarrearID.Text);
+                string direcion = txtDireccion.Text;
+                string telefono = txtTelefono.Text;
+                string estado = cmbEstado.Text;
+
+                int vCantidadRegistros = cdEstudiantes.CP_mtdActualizarEs(codigo, nombre, apellido, fechaNac, fechaIns,carreraID, direcion, telefono,estado);
+                MtdMostrarEstu();
+                MessageBox.Show("El estudiante se actualizo con exito", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

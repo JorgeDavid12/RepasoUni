@@ -43,22 +43,25 @@ namespace CapaDatos
 
         }
 
-        public int CP_mtdActualizarVh(int VehiculoID, string Marca, string Modelo, int Año, decimal Precio, string Estado)
+        public int CP_mtdActualizarEs(int EstudianteID,string Nombre, string Apellido, DateTime FechaNaci, DateTime FechaIns, int CarreraID, string Direccion, string Telefono, string Estado)
         {
             int vContarRegistrosAfectados = 0;
 
-            string vUspActualizarVh = "uspVehiculosUpdate";
-            SqlCommand commActualizarVh = new SqlCommand(vUspActualizarVh, conexion.MtdAbrirConexion());
-            commActualizarVh.CommandType = CommandType.StoredProcedure;
+            string vUspActualizarEs = "uspUpdateEstudiante";
+            SqlCommand commActualizarEstu = new SqlCommand(vUspActualizarEs, conexion.MtdAbrirConexion());
+            commActualizarEstu.CommandType = CommandType.StoredProcedure;
 
-            commActualizarVh.Parameters.AddWithValue("@VehiculoID", VehiculoID);
-            commActualizarVh.Parameters.AddWithValue("@Marca", Marca);
-            commActualizarVh.Parameters.AddWithValue("@Modelo", Modelo);
-            commActualizarVh.Parameters.AddWithValue("@Año", Año);
-            commActualizarVh.Parameters.AddWithValue("@Precio", Precio);
-            commActualizarVh.Parameters.AddWithValue("@Estado", Estado);
+            commActualizarEstu.Parameters.AddWithValue("@EstudianteID", EstudianteID);
+            commActualizarEstu.Parameters.AddWithValue("@Nombre", Nombre);
+            commActualizarEstu.Parameters.AddWithValue("@Apellido", Apellido);
+            commActualizarEstu.Parameters.AddWithValue("@FechaNacimiento", FechaNaci.Date);
+            commActualizarEstu.Parameters.AddWithValue("@FechaInscripcion", FechaIns.Date);
+            commActualizarEstu.Parameters.AddWithValue("@CarreraID", CarreraID);
+            commActualizarEstu.Parameters.AddWithValue("@Direccion", Direccion);
+            commActualizarEstu.Parameters.AddWithValue("@Telefono", Telefono);
+            commActualizarEstu.Parameters.AddWithValue("@Estado", Estado);
 
-            vContarRegistrosAfectados = commActualizarVh.ExecuteNonQuery();
+            vContarRegistrosAfectados = commActualizarEstu.ExecuteNonQuery();
 
             conexion.MtdCerrarConexion();
             return vContarRegistrosAfectados;
